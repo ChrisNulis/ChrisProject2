@@ -40,22 +40,22 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 //___________________
 //Starting collection
 //___________________
-const startingCollections = [
-   {
-     name: 'Bones',
-     description: 'It\'s just a bag of bones.',
-     img: 'http://bluelips.com/prod_images_large/bones1.jpg',
-     qty: 0,
-     owned: true
-   },
-   {
-     name: 'Bins',
-     description: 'A stack of colorful bins for your beans and bones.',
-     img: 'http://www.clipartbest.com/cliparts/9cz/rMM/9czrMMBcE.jpeg',
-     qty: 1,
-     owned: true
-   }
- ];
+// const startingCollections = [
+//    {
+//      name: 'Bones',
+//      description: 'It\'s just a bag of bones.',
+//      img: 'http://bluelips.com/prod_images_large/bones1.jpg',
+//      qty: 0,
+//      owned: true
+//    },
+//    {
+//      name: 'Bins',
+//      description: 'A stack of colorful bins for your beans and bones.',
+//      img: 'http://www.clipartbest.com/cliparts/9cz/rMM/9czrMMBcE.jpeg',
+//      qty: 1,
+//      owned: true
+//    }
+//  ];
 
 // Items.insertMany(startingCollections, (err, items) => {
 //     if (err) {
@@ -65,8 +65,45 @@ const startingCollections = [
 //     }
 //     db.close()
 //   })
+//___________________
+//4. Route for Update
+//___________________
 
+app.put('/collections/:id', (req, res) => {
+    if(req.body.owned === 'on') {
+      req.body.owned = true
+    } else {
+      req.body.owned = false
+    }
+    Items.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
+        res.redirect('/collections')
+    })
+})
 
+//___________________
+//5. Route for Edit
+//___________________
+app.get("/collections/:id/edit", (req, res) => {
+  Items.findById(req.params.id, (err, foundItem) => {
+      res.render(
+        "edit.ejs",
+        {
+          items: foundItem
+        }
+      )
+  })
+
+})
+
+//___________________
+//7. Route for Delete
+//___________________
+app.delete('/collections/:id', (req, res) => {
+  Items.findByIdAndRemove(req.params.id, (err, data) => {
+      res.redirect('/collections');
+  })
+
+})
 
 
 
@@ -118,6 +155,19 @@ app.get('/collections/:id', (req, res) => {
   })
 })
 
+//___________________
+//6. Post Route for Create
+//___________________
+app.post('/collections', (req, res) => {
+  if(req.body.owned === 'on'){
+    req.body.owned = true;
+  } else {
+    req.body.owned = false;
+  }
+  Items.create(req.body, (err, createdItem) => {
+      res.redirect('/collections')
+  })
+})
 
 
 

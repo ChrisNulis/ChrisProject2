@@ -6,13 +6,13 @@
   </head>
   <body>
     <h1>THIS IS EDIT PAGE</h1>
-    <form action="/collection/<%=items.id%>?_method=PUT" method="POST">
+    <form action="/collections/<%=items.id%>?_method=PUT" method="POST">
 
-      Name: <input type="text" name="name" value="<%=item.name%>"/><br/>
-      Description: <input type="text" name="description" value="<%=item.description%>"/><br/>
-      Image:<input type="text" name="img" value="<%=item.img%>"/><br/>
-      Quantity:<input type="text" name="qty" value="<%=item.qty%>"/><br/>
-      Owned: <input type="checkbox" name="owned" <% if(item.owned === true){ %>
+      Name: <input type="text" name="name" value="<%=items.name%>"/><br/>
+      Description: <input type="text" name="description" value="<%=items.description%>"/><br/>
+      Image:<input type="text" name="img" value="<%=items.img%>"/><br/>
+      Quantity:<input type="text" name="qty" value="<%=items.qty%>"/><br/>
+      Owned: <input type="checkbox" name="owned" <% if(items.owned === true){ %>
         checked
       <%}%>
       /><br/>
