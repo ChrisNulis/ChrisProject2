@@ -4,6 +4,7 @@
 const express = require('express');
 const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
+const Items = require ('./models/items.js');
 const app = express ();
 const db = mongoose.connection;
 require('dotenv').config()
@@ -37,12 +38,94 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 //use method override
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 //___________________
+//Starting collection
+//___________________
+const startingCollections = [
+   {
+     name: 'Bones',
+     description: 'It\'s just a bag of bones.',
+     img: 'http://bluelips.com/prod_images_large/bones1.jpg',
+     qty: 0,
+     owned: true
+   },
+   {
+     name: 'Bins',
+     description: 'A stack of colorful bins for your beans and bones.',
+     img: 'http://www.clipartbest.com/cliparts/9cz/rMM/9czrMMBcE.jpeg',
+     qty: 1,
+     owned: true
+   }
+ ];
+
+// Items.insertMany(startingCollections, (err, items) => {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       console.log(items);
+//     }
+//     db.close()
+//   })
+
+
+
+
+
+
+
+//___________________
 // Routes
 //___________________
 //localhost:3000
 app.get('/' , (req, res) => {
   res.send('Hello World!');
 });
+
+//___________________
+//2 Route for Index
+//___________________
+app.get('/collections', (req, res) => {
+  Items.find({}, (err, allItems) => {
+    res.render(
+      'index.ejs',
+      {
+        items:allItems
+      }
+    )
+  })
+
+})
+
+//____________________
+//1Route for New
+//____________________
+app.get('/collections/new', (req, res) => {
+ res.render('new.ejs');
+});
+
+
+
+//___________________
+//3 Route for Show
+//___________________
+app.get('/collections/:id', (req, res) => {
+  Items.findById(req.params.id, (err, foundItem) => {
+    res.render(
+      'show.ejs',
+      {
+        items:foundItem
+      }
+    )
+  })
+})
+
+
+
+
+
+
+
+
+
 //___________________
 //Listener
 //___________________

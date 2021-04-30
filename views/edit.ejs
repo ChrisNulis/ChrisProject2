@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>THIS IS EDIT PAGE</h1>
+    <form action="/collection/<%=items.id%>?_method=PUT" method="POST">
+
+      Name: <input type="text" name="name" value="<%=item.name%>"/><br/>
+      Description: <input type="text" name="description" value="<%=item.description%>"/><br/>
+      Image:<input type="text" name="img" value="<%=item.img%>"/><br/>
+      Quantity:<input type="text" name="qty" value="<%=item.qty%>"/><br/>
+      Owned: <input type="checkbox" name="owned" <% if(item.owned === true){ %>
+        checked
+      <%}%>
+      /><br/>
+
+      <input type="submit" value="Edit POP"/>
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

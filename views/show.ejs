@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>This IS SHOW PAGE</h1>
+    <h2><%=items.name%></h2>
+    <img src="<%=items.img%>" alt=<%=items.name%>>
+    <h3>Quantity: <%=items.qty%></h3>
+    <% if(items.owned === true) {%>
+      You own this item
+    <% } else { %>
+      You don't own this item
+    <%}%>
+
+<nav>
+  <a href="/collections"> Back to Collections </a>
+</nav>
+  </body>
+</html>
