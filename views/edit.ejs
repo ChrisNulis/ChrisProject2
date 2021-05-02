@@ -5,6 +5,9 @@
     <title></title>
   </head>
   <body>
+    <nav>
+      <%- include ('./partials/nav.ejs') %>
+    </nav>
     <h1>THIS IS EDIT PAGE</h1>
     <form action="/collections/<%=items.id%>?_method=PUT" method="POST">
 

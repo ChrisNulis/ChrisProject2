@@ -4,6 +4,7 @@
 const express = require('express');
 const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
+const session = require ('express-session');
 const Items = require ('./models/items.js');
 const app = express ();
 const db = mongoose.connection;
@@ -21,7 +22,7 @@ const MONGODB_URI = process.env.MONGODB_URI;
 // Connect to Mongo &
 // Fix Depreciation Warnings from Mongoose
 // May or may not need these depending on your Mongoose version
-mongoose.connect(MONGODB_URI , { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }
+mongoose.connect(MONGODB_URI , { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true, }
 );
 // Error / success
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
@@ -37,6 +38,39 @@ app.use(express.urlencoded({ extended: false }));// extended: false - does not a
 app.use(express.json());// returns middleware that only parses JSON - may or may not need it depending on your project
 //use method override
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
+app.use(
+  session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+)
+
+
+
+
+//___________________
+//Controller
+//___________________
+//Items Controller
+//___________________
+const itemsController = require ('./controllers/items_controller.js');
+app.use('/collections', itemsController);
+//___________________
+//Users Controller
+//___________________
+const userController = require('./controllers/users_controller.js');
+app.use('/users', userController);
+//___________________
+//Sessions Controller
+//___________________
+const sessionsController = require('./controllers/sessions_controller.js');
+app.use('/sessions', sessionsController);
+
+
+
+
+
 //___________________
 //Starting collection
 //___________________
@@ -65,116 +99,6 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 //     }
 //     db.close()
 //   })
-//___________________
-//4. Route for Update
-//___________________
-
-app.put('/collections/:id', (req, res) => {
-    if(req.body.owned === 'on') {
-      req.body.owned = true
-    } else {
-      req.body.owned = false
-    }
-    Items.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
-        res.redirect('/collections')
-    })
-})
-
-//___________________
-//5. Route for Edit
-//___________________
-app.get("/collections/:id/edit", (req, res) => {
-  Items.findById(req.params.id, (err, foundItem) => {
-      res.render(
-        "edit.ejs",
-        {
-          items: foundItem
-        }
-      )
-  })
-
-})
-
-//___________________
-//7. Route for Delete
-//___________________
-app.delete('/collections/:id', (req, res) => {
-  Items.findByIdAndRemove(req.params.id, (err, data) => {
-      res.redirect('/collections');
-  })
-
-})
-
-
-
-
-
-//___________________
-// Routes
-//___________________
-//localhost:3000
-app.get('/' , (req, res) => {
-  res.send('Hello World!');
-});
-
-//___________________
-//2 Route for Index
-//___________________
-app.get('/collections', (req, res) => {
-  Items.find({}, (err, allItems) => {
-    res.render(
-      'index.ejs',
-      {
-        items:allItems
-      }
-    )
-  })
-
-})
-
-//____________________
-//1Route for New
-//____________________
-app.get('/collections/new', (req, res) => {
- res.render('new.ejs');
-});
-
-
-
-//___________________
-//3 Route for Show
-//___________________
-app.get('/collections/:id', (req, res) => {
-  Items.findById(req.params.id, (err, foundItem) => {
-    res.render(
-      'show.ejs',
-      {
-        items:foundItem
-      }
-    )
-  })
-})
-
-//___________________
-//6. Post Route for Create
-//___________________
-app.post('/collections', (req, res) => {
-  if(req.body.owned === 'on'){
-    req.body.owned = true;
-  } else {
-    req.body.owned = false;
-  }
-  Items.create(req.body, (err, createdItem) => {
-      res.redirect('/collections')
-  })
-})
-
-
-
-
-
-
-
 
 //___________________
 //Listener

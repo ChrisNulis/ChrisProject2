@@ -1,0 +1,16 @@
+<a href="/collections" class="brand-logo">POP</a>
+<ul class="class-one">
+  <li><a href="/collections/new">Create a new POP</a></li>
+  <% if (currentUser) { %>
+      <li>Welcome <%=currentUser.username %></li>
+      <li>
+        <form action="/sessions?_method=DELETE" method="post">
+          <input type="submit" value="Log Out" class="button">
+        </form>
+      </li>
+      <%} else { %>
+        <li><a href="/users/new">Sign Up</a> </li>
+        <li><a href="/sessions/new">Log In</a> </li>
+  <%}%>
+
+</ul>
