@@ -1,8 +1,41 @@
 <header>
   <div class="text-center">
     <div class="image-fluid">
-    <a class="navbar-brand" href="/collections"><img src="https://i.imgur.com/mCEcHHA.jpg"></a>
+    <a class="navbar-brand" href="/collections"><img src="https://i.imgur.com/YfpUc4ht.png"></a>
     </div>
   <h1>Welcome</h1>
+  <br>
+  <h1><a class ="nav justify-content-center" href="/collections" class="logo">POP! Collections</a></h1>
+  <br>
+  <ul class="nav justify-content-center">
+        <li class = "nav-item"><a class ="nav-link" href="/collections/new">Add a POP</a></li>
+        <% if (currentUser) { %>
+            <li>Welcome <%=currentUser.username %></li>
+        <li class = "nav-item">
+            <form action="/sessions?_method=DELETE" method="post">
+            <input type="submit" value="Log Out" class="button">
+            </form>
+        </li>
+        <%} else { %>
+            <li class = "nav-item"><a class = "nav-link" href="/users/new">Sign Up</a> </li>
+            <li class = "nav-item"><a class = "nav-link" href="/sessions/new">Log In</a> </li>
+        <%}%>
+
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   </div>
 </header>
