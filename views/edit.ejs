@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <title></title>
+      <%- include ('./partials/head.ejs') %>
   </head>
   <body>
+    <div class = "container-fluid">
     <nav>
       <%- include ('./partials/nav.ejs') %>
     </nav>
-    <h1>THIS IS EDIT PAGE</h1>
+    <h1>Edit POP!</h1>
     <form action="/collections/<%=items.id%>?_method=PUT" method="POST">
 
       Name: <input type="text" name="name" value="<%=items.name%>"/><br/>
@@ -22,6 +22,7 @@
 
       <input type="submit" value="Edit POP"/>
     </form>
+  </div>
 
 
 

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Items = require('../models/items.js');
 
-const isAuthenticated = (res, req, next) => {
+const isAuthenticated = (req, res, next) => {
   if (req.session.currentUser) {
     return next()
     } else {
@@ -25,7 +25,7 @@ router.put('/:id', (req, res) => {
 //___________________
 //5. Route for Edit
 //___________________
-router.get("/:id/edit", (req, res) => {
+router.get("/:id/edit", isAuthenticated, (req, res) => {
   Items.findById(req.params.id, (err, foundItem) => {
       res.render(
         "edit.ejs",
@@ -39,17 +39,18 @@ router.get("/:id/edit", (req, res) => {
 //___________________
 //7. Route for Delete
 //___________________
-router.delete('/:id', (req, res) => {
+router.delete('/:id', isAuthenticated, (req, res) => {
   Items.findByIdAndRemove(req.params.id, (err, data) => {
       res.redirect('/collections');
   })
 })
+
 //___________________
-// Routes
+// Welcome Routes
 //___________________
 //localhost:3000
-// app.get('/' , (req, res) => {
-//   res.send('Hello World!');
+// router.get('/welcome' , (req, res) => {
+//   res.render('welcome.ejs');
 // });
 
 //___________________
@@ -78,7 +79,7 @@ router.get('/new', (req, res) => {
 //___________________
 //3 Route for Show
 //___________________
-router.get('/:id', (req, res) => {
+router.get('/:id', isAuthenticated, (req, res) => {
     Items.findById(req.params.id, (err, foundItem) => {
       res.render(
         'show.ejs',
@@ -88,6 +89,20 @@ router.get('/:id', (req, res) => {
         })
       })
 })
+
+// router.get('/:id', (req, res) => {
+//     if (req.session.currentUser) {
+//       Items.findById(req.params.id, (error, items) => {
+//         res.render('show.ejs', {
+//           items: items
+//           ,  currentUser: req.session.currentUser
+//         })
+//       })
+//     } else {
+//       res.redirect('/sessions/new')
+//     }
+//
+//   })
 //___________________
 //6. Post Route for Create
 //___________________

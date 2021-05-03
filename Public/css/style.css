@@ -1,0 +1,109 @@
+body {
+  background-image: url('https://i.imgur.com/YfpUc4h.png');
+  /* background-color: #007cec; */
+  background-size: cover;
+  background-position: center;
+  margin: 0 auto;
+  font-family: helvetica;
+}
+a {
+  text-decoration: none;
+}
+
+button.button,input.button {
+  font-size: 0.5em;
+  background-color: orange;
+  color: black;
+  border-radius: 3em;
+  height: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  /* padding: 8px 16px; */
+}
+
+nav,footer, header {
+  width: 95%;
+  margin: 0 auto;
+  padding: 1em 3em;
+  box-sizing: border-box;
+  background: white;
+  border-radius: 3em;
+  text-align: center;
+  box-shadow: 1px 1px 5px #888;
+  justify-content: space-between;
+}
+/*__________________*/
+/*      FORMS       */
+/*__________________*/
+input[type="text"], input[type="password"], input[type="submit"] {
+width: 60%;
+padding: 1em;
+border: 0px;
+border-radius: 0.5em;
+box-shadow: 1px 1px 2px #ddd;
+margin: 0.5em 0;
+}
+
+
+
+
+
+
+
+/*__________________*/
+/*      INDEX       */
+/*__________________*/
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 2em 0;
+  font-family: Helvetica;
+}
+
+li {
+  margin: 1em 0;
+}
+
+li a {
+  color: black;
+  text-shadow: 1px 1px #bebebe;
+  font-size: 1.1em;
+  display: inline-block;
+  padding-bottom: 0.2em;
+}
+
+.main-li {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction:column;
+}
+.main-ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+
+}
+main h1 {
+  font-family: helvetica;
+  display: flex;
+  text-shadow: 5px, 5px, #eee;
+  justify-content: center;
+  color: black;
+  border-bottom: 4px solid white;
+  padding-bottom: 0.2em;
+  width: 90%;
+  margin-bottom: 0.5em;
+}
+/* ================ */
+/*     FOOTER       */
+/* ================ */
+footer {
+  font-weight: 300;
+  font-size: 0.9em;
+  letter-spacing: 0.1em;
+}

@@ -2,34 +2,39 @@
 <html lang="en" dir="ltr">
       <%- include ('./partials/head.ejs') %>
   <body>
-    <nav>
-      <%- include ('./partials/nav.ejs') %>
-    </nav>
-    <h1>This is Index Page</h1>
-    <ul>
-      <% for(let i = 0; i < items.length; i++) { %>
-        <li>
-          <a href="/collections/<%=items[i].id%>">
-            <%=items[i].name %>
-          </a>
-          <img src="<%=items[i].img%>" alt=<%=items.name%>>
-          <form action="/collections/<%=items[i].id%>?_method=DELETE" method="POST">
-            <input type="submit" value="DELETE"/>
-          </form>
-          <a href="/collections/<%=items[i].id%>/edit">Edit</a>
-        </li>
-      <%}%>
-    </ul>
-    <nav>
-      <a href="/collections/new">Create new Pop</a>
-    </nav>
-
-
-
-
-
-
-
+    <div class="container-fluid">
+      <header>
+        <%- include ('./partials/header.ejs') %>
+      </header>
+      <nav>
+        <%- include ('./partials/nav.ejs') %>
+      </nav>
+      <main>
+        <div class= "main-content">
+          <h1>Collections</h1>
+        </div>
+        <div class ="main-ul">
+        <ul>
+          <div class ="main-li">
+            <li>
+              <% for(let i = 0; i < items.length; i++) { %>
+                <a href="/collections/<%=items[i].id%>">
+                  <%=items[i].name %>
+                </a>
+                <form action="/collections/<%=items[i].id%>?_method=DELETE" method="POST">
+                  <input type="submit" class ="button" value="DELETE"/>
+                  <button type = button class ="button">
+                  <a href="/collections/<%=items[i].id%>/edit">Edit</a>
+                  </button>
+                </form>
+              <%}%>
+          </li>
+          </div>
+        </ul>
+        </div>
+      </main>
+      <%- include ("./partials/footer.ejs")%>
+    </div>
 
 
 
