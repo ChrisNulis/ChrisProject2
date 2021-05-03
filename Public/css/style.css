@@ -35,7 +35,7 @@ nav,footer, header {
 /*__________________*/
 /*      FORMS       */
 /*__________________*/
-input[type="text"], input[type="password"], input[type="submit"] {
+/* input[type="text"], input[type="password"], input[type="submit"] {
 width: 60%;
 padding: 1em;
 border: 0px;
@@ -44,7 +44,7 @@ box-shadow: 1px 1px 2px #ddd;
 margin: 0.5em 0;
 }
 
-
+ */
 
 
 

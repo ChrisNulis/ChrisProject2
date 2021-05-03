@@ -49,9 +49,9 @@ router.delete('/:id', isAuthenticated, (req, res) => {
 // Welcome Routes
 //___________________
 //localhost:3000
-router.get('/' , (req, res) => {
-  res.render('index.ejs');
-});
+// router.get('/welcome' , (req, res) => {
+//   res.render('welcome.ejs');
+// });
 
 //___________________
 //2 Route for Index
