@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
       <%- include ('../partials/head.ejs') %>
-
   <body>
     <nav>
-  <%- include ('../partials/nav.ejs') %>
+        <%- include ('../partials/nav.ejs') %>
     </nav>
     <div class="container-fluid">
+      <div class="text-center">
+      <div class="Login-Page">
       <h1>Log In</h1>
-      <form action="/sessions" method="POST">
-          <label for="name">User Name:</label>
-          <input type="text" name="username" required/>
-          <label for="password">Password:</label>
-          <input type="password" name="password"/>
-          <br>
-          <input type="submit" class ="button" value="Submit">
-      </form>
+          <form class="text-center border border-heavy p-5" action="/sessions" method="POST">
+              <input type="text" id="LoginFormUsername" class="form-control mb-4" name="username" required placeholder="username"/>
+              <input type="password" id="LoginFormPassword" class= "form-control mb-4" name="password" placeholder="password"/>
+              <br>
+              <input type="submit" class ="button" value="Submit">
+              <a class = "button" href="/collections">Back</a>
+          </form>
+        </div>
+      </div>
     </div>
   </body>
 </html>

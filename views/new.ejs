@@ -4,19 +4,22 @@
   <body>
     <div class = "container-fluid">
       <main class="show-main">
-    <nav>
-      <%- include ('./partials/nav.ejs') %>
-    </nav>
-    <h1> Create a POP! </h1>
-    <form action= "/collections" method="POST">
-      Name: <input type="text" name="name" /><br/>
-      Description: <input type="text" name="description" /><br/>
-      Image: <input type="text" name="img" /><br/>
-      Qty: <input type="number" name="qty" /><br/>
-      Owned: <input type="checkbox" name="owned" /><br/>
-      <input type="submit" class = "button" value="Create A POP" />
-    </form>
-  </main>
-  </div>
+        <nav>
+          <%- include ('./partials/nav.ejs') %>
+        </nav>
+          <div class="text-center">
+            <h1> Create a POP! </h1>
+            <form class = "text-center border border-heavy p-5" action= "/collections" method="POST">
+              <input type="text" id="EditFormName" class= "form-control mb-4" name="name" placeholder="name"/>
+              <input type="text" id="EditFormDescription" class= "form-control mb-4" name="description" placeholder="description"/>
+              <input type="text" id="EditFormImage" class= "form-control mb-4" name="img" placeholder="image link"/>
+              <input type="number" id="EditFormQuantity" class= "form-control mb-4" name="qty" placeholder="quantity" />
+              Owned: <input type="checkbox" name="owned" /><br/>
+              <input type="submit" class = "button" value="Create A POP" />
+              <a class = "button" href="/collections">Back</a>
+            </form>
+          </div>
+      </main>
+    </div>
   </body>
 </html>

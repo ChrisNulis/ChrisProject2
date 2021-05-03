@@ -5,16 +5,19 @@
     <nav>
         <%- include ('../partials/nav.ejs') %>
     </nav>
-    <div class="container-fluid">
-      <h1>New User</h1>
-      <form action="/users" method="POST">
-          <label for="name">User Name:</label>
-          <input type="text" name="username" required/>
-          <label for="password">Password:</label>
-          <input type="password" name="password"/>
-          <br>
-          <input type="submit" class = "button" value="Submit">
-      </form>
-    </div>
+      <div class="container-fluid">
+        <div class="text-center">
+        <div class="Signup-Page">
+          <h1>New User</h1>
+          <form class="text-center border border-heavy p-5" action="/users" method="POST">
+              <input type="text" id="defaultLoginFormEmail" class="form-control mb-4" name="username" required placeholder="username"/>
+              <input type="password" id="defaultLoginFormPassword" class= "form-control mb-4" name="password" placeholder="password"/>
+              <br>
+              <input type="submit" class = "button" value="Submit">
+              <a class = "button" href="/collections">Back</a>
+          </form>
+        </div>
+      </div>
+  </div>
   </body>
 </html>

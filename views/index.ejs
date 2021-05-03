@@ -10,33 +10,36 @@
         <%- include ('./partials/nav.ejs') %>
       </nav>
       <main>
-        <div class= "main-content">
+          <div class ="text-center">
           <h1>Collections</h1>
-        </div>
-        <div class ="main-ul">
-        <ul>
-          <div class ="main-li">
-            <li>
-              <% for(let i = 0; i < items.length; i++) { %>
-                <a href="/collections/<%=items[i].id%>">
-                  <%=items[i].name %>
-                </a>
-                <form action="/collections/<%=items[i].id%>?_method=DELETE" method="POST">
-                  <input type="submit" class ="button" value="DELETE"/>
-                  <button type = button class ="button">
-                  <a href="/collections/<%=items[i].id%>/edit">Edit</a>
-                  </button>
-                </form>
-              <%}%>
-          </li>
+              <ul>
+                  <li>
+                    <% for(let i = 0; i < items.length; i++) { %>
+                      <a href="/collections/<%=items[i].id%>">
+                        <%=items[i].name %>
+                      </a>
+                      <form action="/collections/<%=items[i].id%>?_method=DELETE" method="POST">
+                        <input type="submit" class ="button" value="DELETE"/>
+                        <button type = button class ="button">
+                        <a href="/collections/<%=items[i].id%>/edit">Edit</a>
+                        </button>
+                      </form>
+                    <%}%>
+                </li>
+              </ul>
           </div>
-        </ul>
-        </div>
       </main>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
       <%- include ("./partials/footer.ejs")%>
     </div>
-
-
-
   </body>
 </html>
