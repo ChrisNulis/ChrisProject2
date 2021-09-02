@@ -1,4 +1,31 @@
-# ChrisProject2
-This is for Funko POP collector where you can add delete stuff.
-In the future I would like to add a new page called a "wanted list" and also a place where you can leave comment(s) so you could trade your POP!
-Also a place where you can have price check, where to get the items (google map integrated).
+
+# Unit 2 Project POP!
+
+Project by:
+Chris Nugroho
+
+## https://nulistwoproject.herokuapp.com/sessions/new
+
+*TECH STACK
+=================
+- MongoDB
+- JavaScript
+- Express.js
+- Node.js
+- HTML
+- CSS
+
+*DESCRIPTION
+=================
+- A CRUD, RESTful, MVC structured Funko POP! Collection App, where users can read, add, edit, delete items from the website. </br>
+- Includes a simple authentication/Login feature using BCrypt and express where only a registered -and logged in- user have the ability to create, edit and delete items.
+
+*PROBLEMS ENCOUNTERED
+========================
+- For some reason, the styling isn't transferred properly in Heroku even though everything works properly locally.
+- Unable to find reliable Funko POP! API
+
+*HOW PROBLEMS WERE FIXED
+===========================
+- Due to time constrain, I utilized bootstrap and style the page directly in .js file (not recommended)!!!
+- Created my own list of items to seed the data manually
